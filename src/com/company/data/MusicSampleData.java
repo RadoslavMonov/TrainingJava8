@@ -32,6 +32,8 @@ public class MusicSampleData {
 
     public static final Album collabAlbum = new Album ("1970 hits",asList(new Track("Yesterday",300),new Track("Other beatles song",400)),asList(theBeatles,ringoStarr,johnColtrane));
 
+    public static List<Album> albumsList = Arrays.asList(aLoveSupreme,sampleShortAlbum,manyTrackAlbum,collabAlbum);
+
     public static Stream<Album> albums = Stream.of(aLoveSupreme);
 
     public static Stream<Artist> threeArtists() {

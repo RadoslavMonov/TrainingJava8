@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class MusicChapter {
     
     protected final List<Artist> artists;
-    protected final List<com.company.bookmodels.Album> albums;
+    protected final List<Album> albums;
 
     public MusicChapter() {
         artists = new ArrayList<>();

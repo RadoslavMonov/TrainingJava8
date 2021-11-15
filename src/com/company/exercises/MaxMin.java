@@ -1,8 +1,10 @@
 package com.company.exercises;
 
-import com.company.bookmodels.Album;
-import com.company.bookmodels.Track;
-import com.company.data.SampleData;
+
+
+import com.company.data.MusicSampleData;
+import com.company.models.Album;
+import com.company.models.Track;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -23,9 +25,9 @@ public class MaxMin {
         System.out.println(shortestTrack.getName());
 
         List<Album> albums = new LinkedList<>();
-        albums.add(SampleData.aLoveSupreme);
-        albums.add(SampleData.sampleShortAlbum);
-        albums.add(SampleData.manyTrackAlbum);
+        albums.add(MusicSampleData.aLoveSupreme);
+        albums.add(MusicSampleData.sampleShortAlbum);
+        albums.add(MusicSampleData.manyTrackAlbum);
 
 
 

@@ -12,20 +12,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CombinedExerciseStreams {
-//    Our first problem to solve is, for a given album, to find the nationality of every band playing on that album.
-//    The artists who play each track can be solo artists or they can be in a band.
-//    We’re going to use domain knowledge and artistic license to pretend that a band is really an artist whose name begins with The.
-//    This isn’t exactly right, but it’s pretty close!
+
+    // Our first problem to solve is, for a given album, to find the nationality of every band playing on that album.
+    // The artists who play each track can be solo artists or they can be in a band.
+    // We’re going to use domain knowledge and artistic license to pretend that a band is really an artist whose name
+    // begins with The.
+    // This isn’t exactly right, but it’s pretty close!
 
     public static void main(String[] args) {
         Album album = MusicSampleData.collabAlbum;
 
         System.out.println(album.getMusicianList().stream()
                 .filter(musician -> musician.getName().startsWith("The"))
-                .map(musician -> musician.getNationality())
+                .map(Artist::getNationality)
                 .collect(Collectors.toList()));
 
-        //double check results
+        // double check results
         List<Artist> artists = album.getMusicians()
                 .filter(band -> band.getName().startsWith("The"))
                 .collect(Collectors.toList());
@@ -37,11 +39,11 @@ public class CombinedExerciseStreams {
 
         List<Album> sampleAlbums = MusicSampleData.albumsList;
 
-        System.out.println("Set of long tracks(legacy code): " +  findLongTracks(sampleAlbums));
+        System.out.println("Set of long tracks(legacy code): " + findLongTracks(sampleAlbums));
 
-        System.out.println("Set of long tracks(first refactor): " +  findLongTracksFirstRefactor(sampleAlbums));
+        System.out.println("Set of long tracks(first refactor): " + findLongTracksFirstRefactor(sampleAlbums));
 
-        System.out.println("Set of long tracks(2nd refactor): " +  findLongTracksSecondRefactor(sampleAlbums));
+        System.out.println("Set of long tracks(2nd refactor): " + findLongTracksSecondRefactor(sampleAlbums));
 
         System.out.println("Set of long tracks(final refactor): " + findLongTracksFinalRefactor(sampleAlbums));
 
@@ -50,7 +52,7 @@ public class CombinedExerciseStreams {
     // "Legacy" code that needs refactoring
     public static Set<String> findLongTracks(List<Album> albums) {
         Set<String> trackNames = new HashSet<>();
-        for(Album album : albums) {
+        for (Album album : albums) {
             for (Track track : album.getTrackList()) {
                 if (track.getLength() > 60) {
                     String name = track.getName();
@@ -65,34 +67,34 @@ public class CombinedExerciseStreams {
     public static Set<String> findLongTracksFirstRefactor(List<Album> albums) {
         Set<String> trackNames = new HashSet<>();
         albums.stream()
-                .forEach(album -> {
-                    album.getTracks()
-                            .filter(track -> track.getLength() > 60)
-                            .map(track -> track.getName())
-                            .forEach(name -> trackNames.add(name));
-                });
+                .forEach(album ->
+                        album.getTracks()
+                                .filter(track -> track.getLength() > 60)
+                                .map(Track::getName)
+                                .forEach(trackNames::add)
+                );
         return trackNames;
     }
 
-    //2nd refactor
+    // 2nd refactor
     public static Set<String> findLongTracksSecondRefactor(List<Album> albums) {
         Set<String> trackNames = new HashSet<>();
 
         albums.stream()
-                .flatMap(album -> album.getTracks())
+                .flatMap(Album::getTracks)
                 .filter(track -> track.getLength() > 60)
-                .map(track -> track.getName())
-                .forEach(name -> trackNames.add(name));
+                .map(Track::getName)
+                .forEach(trackNames::add);
 
         return trackNames;
     }
 
-    //Final refactor
+    // Final refactor
     public static Set<String> findLongTracksFinalRefactor(List<Album> albums) {
         return albums.stream()
-                .flatMap(album -> album.getTracks())
+                .flatMap(Album::getTracks)
                 .filter(track -> track.getLength() > 60)
-                .map(track -> track.getName())
+                .map(Track::getName)
                 .collect(Collectors.toSet());
     }
 }

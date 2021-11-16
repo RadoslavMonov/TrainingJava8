@@ -62,9 +62,5 @@ public class MethodRefs {
 
         System.out.println("result from lamdba : " + lamdbaIsPartOf.test(intList, 6));
         System.out.println("result from method ref : " + methodRefIsPartOf.test(intList, 6));
-
-
     }
-
-
 }

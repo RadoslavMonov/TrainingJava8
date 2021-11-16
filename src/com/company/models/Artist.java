@@ -37,23 +37,15 @@ public final class Artist {
         this.nationality = nationality;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @return the members
-     */
+
     public Stream<Artist> getMembers() {
         return members.stream();
     }
 
-    /**
-     * @return the nationality
-     */
     public String getNationality() {
         return nationality;
     }

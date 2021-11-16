@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 
 public class FlatMap {
+
     public static void main(String[] args) {
 
         //example 1

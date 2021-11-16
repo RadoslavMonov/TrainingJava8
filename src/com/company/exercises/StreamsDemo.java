@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class StreamsDemo {
+
     static class StudentExamResult {
         int roundedPercentage;
         String name;
@@ -78,8 +79,8 @@ public class StreamsDemo {
 
         Set<String> topStudepts = results.stream()
                 .filter(result -> result.roundedPercentage >= 50)
-//                .map(studentExamResult -> studentExamResult.getName())
-//                 methodRef if you want
+        // .map(studentExamResult -> studentExamResult.getName())
+        // methodRef if you want
                 .map(StudentExamResult::getName)
                 .collect(Collectors.toSet());
 

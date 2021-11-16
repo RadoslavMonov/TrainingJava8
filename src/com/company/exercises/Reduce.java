@@ -3,6 +3,7 @@ package com.company.exercises;
 import java.util.stream.Stream;
 
 public class Reduce {
+
     public static void main(String[] args) {
         int sum = Stream.of(1, 2, 3)
                 .reduce(0, (accumulator, element) -> accumulator + element);

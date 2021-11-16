@@ -13,6 +13,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class MaxMin {
+
     public static void main(String[] args) {
         List<Track> tracks = asList(new Track("Bakai", 524),
                 new Track("Violets for Your Furs", 378),

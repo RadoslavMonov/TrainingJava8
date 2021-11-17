@@ -30,20 +30,17 @@ public class MaxMin {
         albums.add(MusicSampleData.sampleShortAlbum);
         albums.add(MusicSampleData.manyTrackAlbum);
 
-
-
-        Album albumResult = albums.stream()
+        Album leastTracksAlbum = albums.stream()
                 .min(Comparator.comparing(album -> album.getTrackList().size()))
                 .get();
 
-        System.out.println("Album with least amount of tracks is " + albumResult.getName() + " with " + albumResult.getTrackList().size() + " tracks ") ;
-
-       Album albumResult2 = albums.stream()
+       Album mostTracksAlbum = albums.stream()
                 .max(Comparator.comparing(album -> album.getTrackList().size()))
                 .get();
 
-        System.out.println("Album with most amount of tracks is " + albumResult2.getName() + " with " + albumResult2.getTrackList().size() + " tracks ") ;
-
-//        assertEquals(tracks.get(1), shortestTrack);
+        System.out.println(String.format("Album with least amount of tracks is %s with %d tracks",
+                leastTracksAlbum.getName(),leastTracksAlbum.getTrackList().size()));
+        System.out.println(String.format("Album with most amount of tracks is %s with %d tracks",
+                mostTracksAlbum.getName(),mostTracksAlbum.getTrackList().size()));
     }
 }

@@ -56,7 +56,7 @@ public class CombinedExerciseStreams {
         long startTimeSecondRefactor = System.currentTimeMillis();
         System.out.println("Set of long tracks(2nd refactor): " + findLongTracksSecondRefactor(sampleAlbums));
         long endTimeSecondRefactor = System.currentTimeMillis();
-        printSpentTime(startTimeSecondRefactor,startTimeSecondRefactor);
+        printSpentTime(startTimeSecondRefactor,endTimeSecondRefactor);
 
         long startTimeFinalRefactored = System.currentTimeMillis();
         System.out.println("Set of long tracks(final refactor): " + findLongTracksFinalRefactor(sampleAlbums));

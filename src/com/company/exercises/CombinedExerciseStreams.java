@@ -9,6 +9,7 @@ import com.company.models.Track;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class CombinedExerciseStreams {
@@ -28,6 +29,7 @@ public class CombinedExerciseStreams {
                 .collect(Collectors.toList()));
 
         // double check results
+
         List<Artist> artists = album.getMusicians()
                 .filter(band -> band.getName().startsWith("The"))
                 .collect(Collectors.toList());
@@ -39,14 +41,31 @@ public class CombinedExerciseStreams {
 
         List<Album> sampleAlbums = MusicSampleData.albumsList;
 
+
+
+        long startTimeNotRefactoredMethod = System.currentTimeMillis();
         System.out.println("Set of long tracks(legacy code): " + findLongTracks(sampleAlbums));
+        long endTimeNotRefactoredMethod = System.currentTimeMillis();
+        printSpentTime(startTimeNotRefactoredMethod,endTimeNotRefactoredMethod);
 
+        long startTimeFirstRefactor = System.currentTimeMillis();
         System.out.println("Set of long tracks(first refactor): " + findLongTracksFirstRefactor(sampleAlbums));
+        long endTimeFirstRefactor = System.currentTimeMillis();
+        printSpentTime(startTimeFirstRefactor,endTimeFirstRefactor);
 
+        long startTimeSecondRefactor = System.currentTimeMillis();
         System.out.println("Set of long tracks(2nd refactor): " + findLongTracksSecondRefactor(sampleAlbums));
+        long endTimeSecondRefactor = System.currentTimeMillis();
+        printSpentTime(startTimeSecondRefactor,startTimeSecondRefactor);
 
+        long startTimeFinalRefactored = System.currentTimeMillis();
         System.out.println("Set of long tracks(final refactor): " + findLongTracksFinalRefactor(sampleAlbums));
+        long endTimeFinalRefactor = System.currentTimeMillis();
+        printSpentTime(startTimeFinalRefactored,endTimeFinalRefactor);
+    }
 
+    private static void printSpentTime(long start, long end){
+        System.out.println(String.format("Took %d milliseconds to execute",(end - start)));
     }
 
     // "Legacy" code that needs refactoring

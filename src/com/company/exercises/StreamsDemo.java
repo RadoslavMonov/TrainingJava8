@@ -77,21 +77,19 @@ public class StreamsDemo {
         List<StudentExamResult> results = getStudentResults();
         System.out.println(results);
 
-        Set<String> topStudepts = results.stream()
+        Set<String> topStudents = results.stream()
                 .filter(result -> result.roundedPercentage >= 50)
-        // .map(studentExamResult -> studentExamResult.getName())
-        // methodRef if you want
                 .map(StudentExamResult::getName)
                 .collect(Collectors.toSet());
 
         List<String> alphabeticallySortedTopStudents = results.stream()
-                        .filter(result -> result.roundedPercentage > 50)
-                        .map(result -> result.getName())
-                        .sorted()
-                        .collect(Collectors.toList());
+                .filter(result -> result.roundedPercentage > 50)
+                .map(StudentExamResult::getName)
+                .sorted()
+                .collect(Collectors.toList());
 
         System.out.println("Top students are: ");
-        topStudepts.forEach(System.out::println);
+        topStudents.forEach(System.out::println);
 
         System.out.println("Top students are (alphabetically sorted now) : ");
         alphabeticallySortedTopStudents.forEach(System.out::println);

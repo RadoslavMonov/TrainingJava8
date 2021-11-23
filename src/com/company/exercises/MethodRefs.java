@@ -38,7 +38,7 @@ public class MethodRefs {
         Calendar cal = constrFn.get();
         System.out.println("Calendar : " + cal);
 
-        // Additional examples with lamdba->method ref conversion
+        // Additional examples with lambda->method ref conversion
 
         // Static method ref
 

@@ -73,6 +73,7 @@ public class StreamsDemo {
             this.name = name;
         }
     }
+    
     public static void main(String[] args) {
         List<StudentExamResult> results = getStudentResults();
         System.out.println(results);

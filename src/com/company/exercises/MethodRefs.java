@@ -42,10 +42,10 @@ public class MethodRefs {
 
         // Static method ref
 
-        Function<String, Double> doubleConverterLamdba = (str) -> Double.parseDouble(str);
+        Function<String, Double> doubleConverterLambda = (str) -> Double.parseDouble(str);
         Function<String, Double> doubleConverterMethodRef = Double::parseDouble;
 
-        System.out.println("result from lambda : " + doubleConverterLamdba.apply("3.522"));
+        System.out.println("result from lambda : " + doubleConverterLambda.apply("3.522"));
         System.out.println("result from method ref: " + doubleConverterMethodRef.apply("3.522"));
 
         // Unbound instance method ref
